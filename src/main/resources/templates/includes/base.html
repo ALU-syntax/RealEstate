@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
+    <head th:fragment="css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RealEstate | 3SC3</title>
@@ -39,13 +39,13 @@ and open the template in the editor.
 </head>
     <body>
         <!-- Preloader Section -->
-        <div id="preloader">
+        <div id="preloader" th:fragment="preloader">
         <div id="status">&nbsp;</div>
     </div>
         <!-- end Preloader Section -->
         
         <!-- Top Header -->
-        <div class="header-connect">
+        <div class="header-connect" th:fragment="top-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-8  col-xs-12">
@@ -74,7 +74,7 @@ and open the template in the editor.
     <!--End top header -->
 
     <!-- Top Navbar -->
-    <nav class="navbar navbar-default ">
+    <nav class="navbar navbar-default " th:fragment="navbar">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -110,7 +110,7 @@ and open the template in the editor.
     <!-- End of top nav bar -->
     
     <!-- Footer Session-->
-    <div class="footer-area">
+    <div class="footer-area" th:fragment="footer">
 
         <div class=" footer">
             <div class="container">
@@ -247,7 +247,8 @@ and open the template in the editor.
 
     </div>
     <!-- End Footer Session -->
-
+    
+    <div th:fragment="script">
     <script src="assets/js/modernizr-2.6.2.min.js"></script>
 
     <script src="assets/js/jquery-1.10.2.min.js"></script>
@@ -266,6 +267,8 @@ and open the template in the editor.
     <script src="assets/js/price-range.js"></script>
 
     <script src="assets/js/main.js"></script>
+    
+    </div>
 
 
     </body>
