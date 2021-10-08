@@ -5,8 +5,10 @@
  */
 package com.RealEstate.Kelompok2_3SC3.controller;
 
+import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class MainController {
     
+    @Autowired
+    private PropertyInterface propertyInterface;
+    
+    
     @RequestMapping("/")
     public String viewHomePage(Model model) {
-        List<Property> listProperty = service.listAll();
-        model.addAttribute("listInventories", listInventories);
+        model.addAttribute("property", propertyInterface.getAll());
 
         return "index";
     }

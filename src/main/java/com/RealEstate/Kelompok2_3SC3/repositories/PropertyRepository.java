@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.RealEstate.Kelompok2_3SC3.interfaces;
+package com.RealEstate.Kelompok2_3SC3.repositories;
 
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 
 /**
  *
  * @author macbook
  */
-public interface PropertyInterface {
-    List<Property> getAll();
-    void store(Property property);
-    Property getById(long id);
-    void delete(long id);
+public interface PropertyRepository extends JpaRepository<Property, Long> {
     List<Property> findByUserId(long user_id);
-    
 }
