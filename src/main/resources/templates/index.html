@@ -21,7 +21,7 @@ and open the template in the editor.
         <!--End top header -->
 
         <!-- Top Navbar -->
-        <nav th:replace="includes/base :: navbar"></nav>
+        <nav th:replace="includes/base :: navbar-home"></nav>
         <!-- End of nav bar -->
 
         <!-- Opening Slider -->
@@ -67,10 +67,12 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="col-xs-6 m-padding">
                                         <div class="welcome-estate">
+                                            <a th:href="@{/property}">
                                             <div class="welcome-icon">
                                                 <i class="pe-7s-home pe-4x"></i>
                                             </div>
                                             <h3>Beli Properti</h3>
+                                            </a>
                                         </div>
                                     </div>
 
@@ -80,10 +82,12 @@ and open the template in the editor.
 
                                     <div class="col-xs-6 m-padding">
                                         <div class="welcome-estate">
+                                            <a th:href="@{/register}">
                                             <div class="welcome-icon">
                                                 <i class="pe-7s-help2 pe-4x"></i>
                                             </div>
-                                            <h3>Jual Properti </h3>
+                                            <h3>Jual Properti</h3>
+                                            </a>
                                         </div>
                                     </div>
 

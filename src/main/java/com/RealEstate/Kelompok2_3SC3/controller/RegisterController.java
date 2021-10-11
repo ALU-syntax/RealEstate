@@ -5,8 +5,14 @@
  */
 package com.RealEstate.Kelompok2_3SC3.controller;
 
+import com.RealEstate.Kelompok2_3SC3.interfaces.CustomerInterface;
+import com.RealEstate.Kelompok2_3SC3.models.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -20,5 +26,24 @@ public class RegisterController {
     
         return "register";
     }
+    
+    @Autowired
+    private CustomerInterface customerInterface;
+
+    @GetMapping("/register")
+    public String index(Model model) {
+
+        Customer customer = new Customer();
+        model.addAttribute("customer", customer);
+
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String store(@ModelAttribute("customer") Customer customer) throws Exception {
+        customerInterface.register(customer);
+        return "redirect:/login";
+    }
+
     
 }

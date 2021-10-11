@@ -75,6 +75,140 @@ and open the template in the editor.
     <!--End top header -->
 
     <!-- Top Navbar -->
+    <!-- Home Navbar -->
+    <nav class="navbar navbar-default " th:fragment="navbar-home">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="index.html"><img src="" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-right">
+                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
+                </div>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="dropdown-toggle active">Home</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- End Home Navbar -->
+    
+    <!-- Property Navbar -->
+    <nav class="navbar navbar-default " th:fragment="navbar-property">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="index.html"><img src="" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-right">
+                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
+                </div>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="dropdown-toggle active" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- End property Navbar -->
+    
+    <!-- Blog Navbar -->
+    <nav class="navbar navbar-default " th:fragment="navbar-blog">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="index.html"><img src="" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-right">
+                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
+                </div>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="dropdown-toggle active" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- End of top nav bar -->
+    <!-- End of Blog Navbar -->
+    
+    <!-- Contact Navbar -->
+    <nav class="navbar navbar-default " th:fragment="navbar-contact">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="index.html"><img src="" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-right">
+                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
+                </div>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="dropdown-toggle active" th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- End Contact Navbar -->
+    
+    <!-- Base Navbar without toogle active -->
     <nav class="navbar navbar-default " th:fragment="navbar">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -95,20 +229,18 @@ and open the template in the editor.
                     <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="dropdown ymm-sw " data-wow-delay="0.1s">
-                        <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Home</a>
-                    </li>
-
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a th:href="@{/contact}">Contact</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="" th:href="@{/contact}">Contact</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <!-- End of top nav bar -->
+    <!-- End Base Navbar -->
+    <!-- End Navbar -->
     
     <!-- Footer Session-->
     <div class="footer-area" th:fragment="footer">
