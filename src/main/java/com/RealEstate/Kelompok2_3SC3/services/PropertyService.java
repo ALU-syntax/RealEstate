@@ -11,11 +11,13 @@ import com.RealEstate.Kelompok2_3SC3.repositories.PropertyRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author macbook
  */
+@Service
 public class PropertyService implements PropertyInterface {
  
     

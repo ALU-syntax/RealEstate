@@ -34,7 +34,7 @@ public class Customer {
     private String password;
     
     @Column(name="birthday")
-    private long birthday;
+    private String birthday;
     
     @Column(name="nik")
     private long nik;
@@ -43,7 +43,7 @@ public class Customer {
     private String address;
     
     @Column(name="number_phone")
-    private long numberPhone;
+    private long numberPhone;    
 
     public long getId() {
         return id;
@@ -77,11 +77,11 @@ public class Customer {
         this.password = password;
     }
 
-    public long getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(long birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -109,5 +109,6 @@ public class Customer {
         this.numberPhone = numberPhone;
     }
     
+
     
 }

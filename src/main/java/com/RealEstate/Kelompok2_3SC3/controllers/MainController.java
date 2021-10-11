@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.RealEstate.Kelompok2_3SC3.controller;
+package com.RealEstate.Kelompok2_3SC3.controllers;
 
 import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
