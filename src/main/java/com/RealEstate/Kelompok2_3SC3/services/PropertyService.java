@@ -18,38 +18,5 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class PropertyService implements PropertyInterface {
  
-    @Autowired
-    private PropertyRepository propertyRepository;
     
-    @Override
-    public List<Property> getAll() {
-        return propertyRepository.findAll();
-    }
-
-    @Override
-    public void store(Property property) {
-        this.propertyRepository.save(property);
-    }
-    
-    @Override
-    public Property getById(long id) {
-        Optional < Property > optional = propertyRepository.findById(id);
-
-        if (!optional.isPresent()) {
-        throw new RuntimeException(" Property not found for id :: " + id);
-    }
-
-    Property todo = optional.get();
-        return todo;
-    }
-
-    @Override
-    public void delete(long id) {
-        this.propertyRepository.deleteById(id);
-    }
-    
-    @Override
-    public List<Property> findByUserId(long user_id) {
-        return propertyRepository.findByUserId(user_id);
-    }
 }

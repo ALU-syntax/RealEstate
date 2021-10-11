@@ -22,21 +22,21 @@ and open the template in the editor.
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Link Css nya taro sini, jangan berantakan! -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/fontello.css">
-    <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
-    <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/icheck.min_all.css">
-    <link rel="stylesheet" href="assets/css/price-range.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.csss}">
+    <link rel="stylesheet"  th:href="@{/css/fontello.css}">
+    <link th:href="@{/fonts/icon-7-stroke/css/pe-icon-7-stroke.css}" rel="stylesheet">
+    <link th:href="@{/fonts/icon-7-stroke/css/helper.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icheck.min_all.css}">
+    <link rel="stylesheet" th:href="@{/css/price-range.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.theme.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.transitions.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
 </head>
     <body>
         <!-- Preloader Section -->
@@ -91,17 +91,17 @@ and open the template in the editor.
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
-                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.4s">Login</button>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.5s">Submit</button>
+                    <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
+                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="dropdown ymm-sw " data-wow-delay="0.1s">
                         <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Home</a>
                     </li>
 
-                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.html">Properties</a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="property.html">Property</a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a th:href="@{/contact}">Contact</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -250,24 +250,24 @@ and open the template in the editor.
     <!-- End Footer Session -->
     
     <div th:fragment="script">
-    <script src="assets/js/modernizr-2.6.2.min.js"></script>
+    <script src="assets/js/" th:src="@{/js/modernizr-2.6.2.min.js}"></script>
 
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bootstrap-select.min.js"></script>
-    <script src="assets/js/bootstrap-hover-dropdown.js"></script>
+    <script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/bootstrap-select.min.js}"></script>
+    <script th:src="@{/js/bootstrap-hover-dropdown.js}"></script>
 
-    <script src="assets/js/easypiechart.min.js"></script>
-    <script src="assets/js/jquery.easypiechart.min.js"></script>
+    <script th:src="@{/js/easypiechart.min.js}"></script>
+    <script th:src="@{/js/jquery.easypiechart.min.js}"></script>
 
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
 
-    <script src="assets/js/wow.js"></script>
+    <script th:src="@{/js/wow.js}"></script>
 
-    <script src="assets/js/icheck.min.js"></script>
-    <script src="assets/js/price-range.js"></script>
+    <script th:src="@{/js/icheck.min.js}"></script>
+    <script th:src="@{/js/price-range.js}"></script>
 
-    <script src="assets/js/main.js"></script>
+    <script th:src="@{/js/main.js}"></script>
     
     </div>
 

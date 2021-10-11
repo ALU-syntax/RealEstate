@@ -21,7 +21,7 @@ and open the template in the editor.
     <!-- End Preloader Session -->
     
     <!-- TopHead Session -->
-    <div th:replace="includes/base :: top-head"></div>
+    <div th:replace="includes/base :: top-header"></div>
     <!--End tophead Session -->
     
     <!-- Navbar Session -->
@@ -81,7 +81,7 @@ and open the template in the editor.
                             <div class="col-sm-6 col-md-3 p0">
                                 <div class="box-two proerty-item">
                                     <div class="item-thumb">
-                                        <a href="property-1.html"><img src="assets/img/demo/property-3.jpg"></a>
+                                        <a href="property-1.html"><img th:src="@{/img/demo/property-3.jpg}"></a>
                                     </div>
 
                                     <div class="item-entry overflow">

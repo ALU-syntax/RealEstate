@@ -13,10 +13,5 @@ import java.util.List;
  * @author macbook
  */
 public interface PropertyInterface {
-    List<Property> getAll();
-    void store(Property property);
-    Property getById(long id);
-    void delete(long id);
-    List<Property> findByUserId(long user_id);
     
 }
