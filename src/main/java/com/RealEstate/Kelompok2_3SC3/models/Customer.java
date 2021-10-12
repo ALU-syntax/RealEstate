@@ -5,6 +5,7 @@
  */
 package com.RealEstate.Kelompok2_3SC3.models;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="customer")
-public class Customer {
+public class Customer implements Serializable {
+
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -44,6 +46,9 @@ public class Customer {
     
     @Column(name="number_phone")
     private long numberPhone;    
+    
+    @Column(name = "image")
+    private String image;
 
     public long getId() {
         return id;
@@ -108,7 +113,14 @@ public class Customer {
     public void setNumberPhone(long numberPhone) {
         this.numberPhone = numberPhone;
     }
-    
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
     
 }

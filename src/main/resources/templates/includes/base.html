@@ -37,6 +37,7 @@ and open the template in the editor.
     <link rel="stylesheet" th:href="@{/css/owl.transitions.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/lightslider.min.css}">
 </head>
     <body>
         <!-- Preloader Section -->
@@ -382,7 +383,7 @@ and open the template in the editor.
     <!-- End Footer Session -->
     
     <div th:fragment="script">
-    <script src="assets/js/" th:src="@{/js/modernizr-2.6.2.min.js}"></script>
+    <script th:src="@{/js/modernizr-2.6.2.min.js}"></script>
 
     <script th:src="@{/js/jquery-1.10.2.min.js}"></script>
     <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
@@ -400,7 +401,6 @@ and open the template in the editor.
     <script th:src="@{/js/price-range.js}"></script>
 
     <script th:src="@{/js/main.js}"></script>
-    
     </div>
 
 

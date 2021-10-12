@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author macbook
  */
+@Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
-    
+    List<Property> findByUserId(long user_id);
 }
