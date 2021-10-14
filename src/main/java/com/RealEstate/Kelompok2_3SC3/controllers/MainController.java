@@ -5,7 +5,6 @@
  */
 package com.RealEstate.Kelompok2_3SC3.controllers;
 
-import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,6 @@ public class MainController {
     
     @GetMapping("/property")
     public String propertiesPage(){
-        
         return "property";
     }
     
