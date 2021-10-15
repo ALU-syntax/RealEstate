@@ -29,15 +29,22 @@ and open the template in the editor.
     <link th:href="@{/fonts/icon-7-stroke/css/helper.css}" rel="stylesheet">
     <link th:href="@{/css/animate.css}" rel="stylesheet" media="screen">
     <link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-theme.css}">
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/icheck.min_all.css}">
+    <link rel="stylesheet" th:href="@{/css/ion.rangeSlider.css}">
+    <link rel="stylesheet" th:href="@{/css/ion.rangeSlider.skinFlat.css}">
+    <link rel="stylesheet" th:href="@{/css/ion.rangeSlider.skinNice.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.slitslider.css}">
     <link rel="stylesheet" th:href="@{/css/price-range.css}">
     <link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
     <link rel="stylesheet" th:href="@{/css/owl.theme.css}">
     <link rel="stylesheet" th:href="@{/css/owl.transitions.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/wizard.css}"> 
     <link rel="stylesheet" th:href="@{/css/lightslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
 </head>
     <body>
         <!-- Preloader Section -->
@@ -94,7 +101,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <a th:href="@{/logout}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.4s">Logout</button></a>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Insert Property</button>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="dropdown-toggle active">Home</a></li>
@@ -127,7 +134,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <a th:href="@{/logout}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.4s">Logout</button></a>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Insert Property</button>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
@@ -160,7 +167,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <a th:href="@{/logout}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.4s">Logout</button></a>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Insert Property</button>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
@@ -194,7 +201,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <a th:href="@{/logout}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.4s">Logout</button></a>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Insert Property</button>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
@@ -210,6 +217,39 @@ and open the template in the editor.
     <!-- End Contact Navbar -->
     
     <!-- Base Navbar without toogle active -->
+    <nav class="navbar navbar-default " th:fragment="navbar-afterlogin">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="index.html"><img src="" alt=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-right">
+                    <a th:href="@{/logout}"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.4s">Logout</button></a>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
+                </div>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/property}">Property</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" th:href="@{/blog}">Blog</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.4s"><a class="" th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- End Base Navbar -->
+    
+    <!-- Navbar After login Base -->
     <nav class="navbar navbar-default " th:fragment="navbar">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -227,7 +267,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
                     <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('login')" data-wow-delay="0.4s">Login</button>
-                    <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property')" data-wow-delay="0.5s">Submit</button>
+                    <a class="navbar-btn nav-button wow fadeInRight" th:href="@{/submit-property}" data-wow-delay="0.5s">Insert Property</a>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a th:href="@{/}" class="">Home</a></li>
@@ -240,7 +280,7 @@ and open the template in the editor.
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <!-- End Base Navbar -->
+    <!-- End Base Navbar After login -->
     <!-- End Navbar -->
     
     <!-- Footer Session-->
