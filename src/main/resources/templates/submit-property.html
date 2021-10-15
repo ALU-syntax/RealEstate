@@ -44,7 +44,7 @@ and open the template in the editor.
                     <div class="wizard-container"> 
 
                         <div class="wizard-card ct-wizard-orange" id="wizardProperty">
-                            <form action="" method="">                        
+                            <form action="#" method="POST" th:action="@{/submit-property}" enctype="multipart/form-data">                        
                                 <div class="wizard-header">
                                     <h3>
                                         <b>Submit</b> YOUR PROPERTY <br>
@@ -68,24 +68,20 @@ and open the template in the editor.
                                                 <div class="picture-container">
                                                     <div class="picture">
                                                         <img th:src="@{/img/default-property.jpg}" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" id="wizard-picture">
+                                                        <input type="file" accept="image/png, image/jpeg" name="image" id="wizard-picture" required>
                                                     </div> 
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Property name <small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ...">
+                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ..." required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Property price <small>(required)</small></label>
-                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000">
+                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000" required>
                                                 </div> 
-                                                <div class="form-group">
-                                                    <label>Telephone <small>(empty if you wanna use default phone number)</small></label>
-                                                    <input name="phone" type="text" class="form-control" placeholder="+1 473 843 7436">
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -106,54 +102,57 @@ and open the template in the editor.
                                             <div class="col-sm-12">
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <label>Property State :</label>
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                                                            <option>Seoul</option>
-                                                            <option>Paris</option>
-                                                            <option>Casablanca</option>
-                                                            <option>Tokyo</option>
-                                                            <option>Marraekch</option>
-                                                            <option>kyoto , shibua</option>
+                                                        <label>Property Status :</label>
+                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Property Status">
+                                                            <option>Rent</option>
+                                                            <option>Sell</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
+                                            </div>
+                                            
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Property City :</label>
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select your city">
-                                                            <option>New york, CA</option>
-                                                            <option>Paris</option>
-                                                            <option>Casablanca</option>
-                                                            <option>Tokyo</option>
-                                                            <option>Marraekch</option>
-                                                            <option>kyoto , shibua</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
+                                                        <textarea name="city" class="form-control" ></textarea>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                            
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
                                                     <div class="form-group">
-                                                        <label>Property Statue  :</label>
-                                                        <select id="basic" class="selectpicker show-tick form-control">
-                                                            <option> -Status- </option>
-                                                            <option>Rent </option>
-                                                            <option>Boy</option>
-                                                            <option>used</option>  
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
+                                                        <label>Property Area :</label>
+                                                        <textarea name="area" class="form-control" ></textarea>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                            
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
                                                     <div class="form-group">
-                                                        <label>Property Statue  :</label>
-                                                        <select id="basic" class="selectpicker show-tick form-control">
-                                                            <option> -Status- </option>
-                                                            <option>Rent </option>
-                                                            <option>Boy</option>
-                                                            <option>used</option>  
-
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                        <label>Bathroom :</label>
+                                                        <textarea name="bathroom" class="form-control" ></textarea>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                            
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
+                                                    <div class="form-group">
+                                                        <label>Bedroom :</label>
+                                                        <textarea name="discrition" class="form-control" ></textarea>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                            <div class="col-sm-12"> 
+                                                <div class="col-sm-12"> 
+                                                    <div class="form-group">
+                                                        <label>Garage :</label>
+                                                        <textarea name="garage" class="form-control" ></textarea>
+                                                    </div> 
+                                                </div> 
                                             </div>
 
                                             <br>

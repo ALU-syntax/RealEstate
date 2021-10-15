@@ -48,8 +48,8 @@ public class Property implements Serializable {
     @Column(name="bedrooms")
     private long bedrooms;
     
-    @Column(name="garage")
-    private long garage;
+    @Column(name="city")
+    private String city;
     
     @Column(name="garden_area")
     private long gardenArea;
@@ -62,6 +62,15 @@ public class Property implements Serializable {
     
     @Column(name = "image", columnDefinition = "longblob")
     private String image;
+    
+    @Column(name = "image2", columnDefinition = "longblob")
+    private String image2;
+    
+    @Column(name = "image3", columnDefinition = "longblob")
+    private String image3;
+    
+    @Column(name = "image4", columnDefinition = "longblob")
+    private String image4;
 
     public long getId() {
         return id;
@@ -87,8 +96,6 @@ public class Property implements Serializable {
         this.price = price;
     }
 
-    
-    
     public Category getCategoryId() {
         return categoryId;
     }
@@ -121,12 +128,12 @@ public class Property implements Serializable {
         this.bedrooms = bedrooms;
     }
 
-    public long getGarage() {
-        return garage;
+    public String getCity() {
+        return city;
     }
 
-    public void setGarage(long garage) {
-        this.garage = garage;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public long getGardenArea() {
@@ -159,6 +166,30 @@ public class Property implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
+    }
+
+    public String getImage4() {
+        return image4;
+    }
+
+    public void setImage4(String image4) {
+        this.image4 = image4;
     }
     
     
