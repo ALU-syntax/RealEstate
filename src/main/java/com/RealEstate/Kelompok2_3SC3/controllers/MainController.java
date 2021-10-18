@@ -5,7 +5,6 @@
  */
 package com.RealEstate.Kelompok2_3SC3.controllers;
 
-import com.RealEstate.Kelompok2_3SC3.models.Property;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

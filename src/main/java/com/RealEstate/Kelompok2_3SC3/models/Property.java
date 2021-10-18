@@ -5,16 +5,12 @@
  */
 package com.RealEstate.Kelompok2_3SC3.models;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -22,54 +18,49 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Entity
 @Table(name="property")
-public class Property implements Serializable {
+public class Property {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    @Column(name="name")
-    private String name;
+    @Column(name="title")
+    private String title;
     
     @Column(name="price")
     private long price;
     
-    @ManyToOne
-    @JoinColumn(name="category_id")
-    private Category categoryId;
+    @Column(name="category_id")
+    private long category_id;
     
-    @ManyToOne
-    @JoinColumn(name="customer_id")
-    private Customer customerId;
+    @Column(name="customer_id")
+    private long customer_id;
     
     @Column(name="area")
     private long area;
     
-    @Column(name="bedrooms")
-    private long bedrooms;
+    @Column(name="bedroom")
+    private long bedroom;
     
-    @Column(name="city")
+    @Column(name="name")
     private String city;
-    
-    @Column(name="garden_area")
-    private long gardenArea;
     
     @Column(name="bathroom")
     private long bathroom;
     
     @Column(name="description")
-    private String description;
+    private String desc;
     
-    @Column(name = "image", columnDefinition = "longblob")
+    @Column(name="image", columnDefinition = "longblob")
     private String image;
     
-    @Column(name = "image2", columnDefinition = "longblob")
+    @Column(name="image2", columnDefinition = "longblob")
     private String image2;
     
-    @Column(name = "image3", columnDefinition = "longblob")
+    @Column(name="image3", columnDefinition = "longblob")
     private String image3;
     
-    @Column(name = "image4", columnDefinition = "longblob")
+    @Column(name="image4", columnDefinition = "longblob")
     private String image4;
 
     public long getId() {
@@ -80,12 +71,12 @@ public class Property implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public long getPrice() {
@@ -96,20 +87,20 @@ public class Property implements Serializable {
         this.price = price;
     }
 
-    public Category getCategoryId() {
-        return categoryId;
+    public long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(Category categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory_id(long category_id) {
+        this.category_id = category_id;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
+    public long getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
+    public void setCustomer_id(long customer_id) {
+        this.customer_id = customer_id;
     }
 
     public long getArea() {
@@ -120,12 +111,12 @@ public class Property implements Serializable {
         this.area = area;
     }
 
-    public long getBedrooms() {
-        return bedrooms;
+    public long getBedroom() {
+        return bedroom;
     }
 
-    public void setBedrooms(long bedrooms) {
-        this.bedrooms = bedrooms;
+    public void setBedroom(long bedroom) {
+        this.bedroom = bedroom;
     }
 
     public String getCity() {
@@ -136,14 +127,6 @@ public class Property implements Serializable {
         this.city = city;
     }
 
-    public long getGardenArea() {
-        return gardenArea;
-    }
-
-    public void setGardenArea(long gardenArea) {
-        this.gardenArea = gardenArea;
-    }
-
     public long getBathroom() {
         return bathroom;
     }
@@ -152,12 +135,12 @@ public class Property implements Serializable {
         this.bathroom = bathroom;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getImage() {
