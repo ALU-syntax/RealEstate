@@ -70,7 +70,7 @@ public class PropertyController {
         propertyService.saveProductToDB(file, file2, file3, file4, title, price,
                 categoryId, customerId, area, bedroom, city, bathroom, desc);
     	
-    	return "redirect:/profile";
+    	return "redirect:/property";
     }
     
 }
