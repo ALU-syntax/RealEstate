@@ -5,8 +5,7 @@
  */
 package com.RealEstate.Kelompok2_3SC3.repositories;
 
-import com.RealEstate.Kelompok2_3SC3.models.Property;
-import java.util.List;
+import com.RealEstate.Kelompok2_3SC3.models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author macbook
  */
 @Repository
-public interface PropertyRepository extends JpaRepository<Property, Long>{
-    List<Property> findByCustomerId(long customer_id);
+public interface CategoryRepository extends JpaRepository<Category, Long>{
+    
 }

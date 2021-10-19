@@ -75,12 +75,12 @@ and open the template in the editor.
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Property name <small>(required)</small></label>
-                                                    <input name="propertyname" type="text" class="form-control" placeholder="Super villa ..." required>
+                                                    <input name="title" type="text" class="form-control" placeholder="Super villa ..." required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Property price <small>(required)</small></label>
-                                                    <input name="propertyprice" type="text" class="form-control" placeholder="3330000" required>
+                                                    <input name="price" type="text" class="form-control" placeholder="3330000" required>
                                                 </div> 
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@ and open the template in the editor.
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Property Description :</label>
-                                                        <textarea name="discrition" class="form-control" ></textarea>
+                                                        <textarea name="desc" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -103,9 +103,10 @@ and open the template in the editor.
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Property Status :</label>
-                                                        <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Property Status">
-                                                            <option>Rent</option>
-                                                            <option>Sell</option>
+                                                        <select th:field="*{categories}" id="lunchBegins" class="selectpicker" title="Select Property Status">
+                                                            <th:block th:each="cat : ${categories}">
+                                                                <option th:text="${cat.name}" th:value="${cat.id}"></option>
+                                                            </th:block>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -115,7 +116,7 @@ and open the template in the editor.
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Property City :</label>
-                                                        <textarea name="city" class="form-control" ></textarea>
+                                                        <textarea name="city" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -124,7 +125,7 @@ and open the template in the editor.
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Property Area :</label>
-                                                        <textarea name="area" class="form-control" ></textarea>
+                                                        <textarea name="area" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -133,7 +134,7 @@ and open the template in the editor.
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Bathroom :</label>
-                                                        <textarea name="bathroom" class="form-control" ></textarea>
+                                                        <textarea name="bathroom" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -142,15 +143,7 @@ and open the template in the editor.
                                                 <div class="col-sm-12"> 
                                                     <div class="form-group">
                                                         <label>Bedroom :</label>
-                                                        <textarea name="discrition" class="form-control" ></textarea>
-                                                    </div> 
-                                                </div> 
-                                            </div>
-                                            <div class="col-sm-12"> 
-                                                <div class="col-sm-12"> 
-                                                    <div class="form-group">
-                                                        <label>Garage :</label>
-                                                        <textarea name="garage" class="form-control" ></textarea>
+                                                        <textarea name="bedroom" class="form-control" required></textarea>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -166,17 +159,17 @@ and open the template in the editor.
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
+                                                    <input class="form-control" type="file" id="property-images" name="image2">
                                                     <p class="help-block">Select multipel images for your property .</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
+                                                    <input class="form-control" type="file" id="property-images" name="image3">
                                                     <p class="help-block">Select multipel images for your property .</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="property-images">Chose Images :</label>
-                                                    <input class="form-control" type="file" id="property-images">
+                                                    <input class="form-control" type="file" id="property-images" name="image4">
                                                     <p class="help-block">Select multipel images for your property .</p>
                                                 </div>
                                             </div>
@@ -216,8 +209,9 @@ and open the template in the editor.
 
                                 <div class="wizard-footer">
                                     <div class="pull-right">
+                                        <input type="hidden" th:value="${session.id}" name="customer_id" />
                                         <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
-                                        <input type='button' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+                                        <Button type='submit' class='btn btn-finish btn-primary'>Finish</button>
                                     </div>
 
                                     <div class="pull-left">

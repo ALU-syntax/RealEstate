@@ -6,6 +6,8 @@
 package com.RealEstate.Kelompok2_3SC3.services;
 
 import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
+import com.RealEstate.Kelompok2_3SC3.models.Category;
+import com.RealEstate.Kelompok2_3SC3.models.Customer;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import com.RealEstate.Kelompok2_3SC3.repositories.PropertyRepository;
 import java.io.IOException;
@@ -31,13 +33,25 @@ public class PropertyService implements PropertyInterface{
         return propertyRepository.findAll();
     }
 
+    
+
     @Override
-    public void saveProductToDB(MultipartFile file, MultipartFile file2, 
+    public List<Property> findByCustomerId(long customer_id) {
+        return propertyRepository.findByCustomerId(customer_id);
+    }
+
+    @Override
+    public Property getById(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void saveProductToDB(MultipartFile file, MultipartFile file2,
             MultipartFile file3, MultipartFile file4, String title, long price,
-            long categoryId, long customerId, long area, long bedroom,
+            long categoryId, long customer_id, long area, long bedroom,
             String city, long bathroom, String desc) {
         
-        Property property = new Property();
+       Property property = new Property();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName.contains(".."))
 		{
@@ -48,41 +62,41 @@ public class PropertyService implements PropertyInterface{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//        String fileName2 = StringUtils.cleanPath(file.getOriginalFilename());
-//        if(fileName2.contains(".."))
-//		{
-//			System.out.println("not a a valid file");
-//		}
-//		try {
-//			property.setImage2(Base64.getEncoder().encodeToString(file.getBytes()));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//        String fileName3 = StringUtils.cleanPath(file.getOriginalFilename());
-//        if(fileName3.contains(".."))
-//		{
-//			System.out.println("not a a valid file");
-//		}
-//		try {
-//			property.setImage3(Base64.getEncoder().encodeToString(file.getBytes()));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//        String fileName4 = StringUtils.cleanPath(file.getOriginalFilename());
-//        if(fileName4.contains(".."))
-//		{
-//			System.out.println("not a a valid file");
-//		}
-//		try {
-//			property.setImage4(Base64.getEncoder().encodeToString(file.getBytes()));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+        String fileName2 = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName2.contains(".."))
+		{
+			System.out.println("not a a valid file");
+		}
+		try {
+			property.setImage2(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        String fileName3 = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName3.contains(".."))
+		{
+			System.out.println("not a a valid file");
+		}
+		try {
+			property.setImage3(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        String fileName4 = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName4.contains(".."))
+		{
+			System.out.println("not a a valid file");
+		}
+		try {
+			property.setImage4(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
         property.setTitle(title);
         property.setPrice(price);
-        property.setCategory_id(categoryId);
-        property.setCustomer_id(customerId);
+        property.setCategoryId(categoryId);
+        property.setCustomerId(customer_id);
         property.setArea(area);
         property.setBedroom(bedroom);
         property.setCity(city);
@@ -93,19 +107,14 @@ public class PropertyService implements PropertyInterface{
     }
 
     @Override
-    public List<Property> findByCustomerId(long customer_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateProductToDB(MultipartFile file, MultipartFile file2,
+            MultipartFile file3, MultipartFile file4, long id, String title,
+            long price, long categoryId, long customerId, long area,
+            long bedroom, String city, long bathroom, String desc) {
+        
     }
 
-    @Override
-    public Property getById(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void updateProductToDB(MultipartFile file, MultipartFile file2, MultipartFile file3, MultipartFile file4, long id, String title, long price, long categoryId, long customerId, long area, long bedroom, String city, long bathroom, String desc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public void delete(long id) {

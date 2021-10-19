@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,18 +33,18 @@ public class Property {
     private long price;
     
     @Column(name="category_id")
-    private long category_id;
+    private long categoryId;
     
     @Column(name="customer_id")
-    private long customer_id;
+    private long customerId;
     
     @Column(name="area")
     private long area;
     
-    @Column(name="bedroom")
+    @Column(name="bedrooms")
     private long bedroom;
     
-    @Column(name="name")
+    @Column(name="city")
     private String city;
     
     @Column(name="bathroom")
@@ -87,21 +89,23 @@ public class Property {
         this.price = price;
     }
 
-    public long getCategory_id() {
-        return category_id;
+    public long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(long category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public long getCustomer_id() {
-        return customer_id;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
+
+    
 
     public long getArea() {
         return area;
