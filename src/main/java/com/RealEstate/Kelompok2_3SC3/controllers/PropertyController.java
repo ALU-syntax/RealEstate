@@ -73,4 +73,5 @@ public class PropertyController {
     	return "redirect:/property";
     }
     
+
 }
