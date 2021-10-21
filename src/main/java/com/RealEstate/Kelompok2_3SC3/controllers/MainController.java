@@ -5,6 +5,8 @@
  */
 package com.RealEstate.Kelompok2_3SC3.controllers;
 
+import com.RealEstate.Kelompok2_3SC3.models.Property;
+import com.RealEstate.Kelompok2_3SC3.services.PropertyService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
     
+    @Autowired
+    private PropertyService propertyService;
+    
     @GetMapping("/")
     public String index(){
         
@@ -26,7 +31,10 @@ public class MainController {
     }
     
     @GetMapping("/property")
-    public String propertiesPage(){
+    public String propertiesPage(Model model){
+        List<Property> property = propertyService.getAll();
+        model.addAttribute("property", property);
+        
         return "property";
     }
     

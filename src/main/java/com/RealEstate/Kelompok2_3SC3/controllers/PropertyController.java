@@ -6,8 +6,9 @@
 package com.RealEstate.Kelompok2_3SC3.controllers;
 
 import com.RealEstate.Kelompok2_3SC3.interfaces.CategoryInterface;
+import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
 import com.RealEstate.Kelompok2_3SC3.models.Category;
-import com.RealEstate.Kelompok2_3SC3.services.CategoryService;
+import com.RealEstate.Kelompok2_3SC3.models.Property;
 import com.RealEstate.Kelompok2_3SC3.services.PropertyService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -30,6 +32,9 @@ public class PropertyController {
     
     @Autowired
     private PropertyService propertyService;
+    
+    @Autowired
+    private PropertyInterface propertyInterface;
     
     @GetMapping("/detail-property")
     public String pageDetailProperty(){
@@ -73,5 +78,14 @@ public class PropertyController {
     	return "redirect:/property";
     }
     
-
+    @GetMapping("/{id}/detail-property")
+    public String detailProperty(@PathVariable(value = "id")long id, Model model){
+        
+        Property p = propertyInterface.getById(id);
+        model.addAttribute("detail", p);
+        
+        return "detail-property";
+    
+    }
+    
 }

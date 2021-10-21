@@ -77,29 +77,34 @@ and open the template in the editor.
                     </div>
 
                     <div class="col-md-12 ">
+                        <th:block th:each="property : ${property}">
                         <div id="list-type" class="proerty-th">
                             <div class="col-sm-6 col-md-3 p0">
                                 <div class="box-two proerty-item">
                                     <div class="item-thumb">
-                                        <a th:href="@{/detail-property}"><img th:src="@{/img/demo/property-3.jpg}"></a>
+                                        <a th:href="@{/{id}/detail-property(id=${property.id})}"><img th:src="*{'data:image/jpeg;base64,'+{property.image}}"></a>
                                     </div>
-
+                                    
                                     <div class="item-entry overflow">
-                                        <h5><a th:href="@{/detail-property}"> Super nice villa </a></h5>
+                                        <h5 th:text="${property.title}"><a th:href="@{/{id}/detail-property(id=${property.id})}"> </a></h5>
                                         <div class="dot-hr"></div>
-                                        <span class="pull-left"><b> Area :</b> 120m </span>
-                                        <span class="proerty-price pull-right"> $ 300,000</span>
-                                        <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
+                                        <span class="pull-left" ><b> Area :</b> <span th:text="${property.area}"></span> <b>M<sup>2</sup></b> </span>
+                                        <span class="proerty-price pull-right" > Rp. <span th:text="${property.price}"></span> </span>
+                                        <p style="display: none;" th:text="${property.desc}"></p>
                                         <div class="property-icon">
-                                            <img th:src="@{/img/icon/bed.png}">
-                                            <img th:src="@{/img/icon/shawer.png}">(2)|
-                                            <img th:src="@{/img/icon/cars.png}">(1)
+                                            <img th:src="@{/img/icon/bed.png}"><span th:text="${property.bedroom}"></span> <b>|</b>
+                                            <img th:src="@{/img/icon/shawer.png}"> <span th:text="${property.bathroom}"></span> <b>|</b>
+                                            <br/>
+                                            <img th:src="@{/img/icon/cars.png}"> : <span th:text="${property.city}"></span> 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </th:block>
                     </div>
+                    
+                    <!-- Next Page -->
                     <div class="col-md-12">
                         <div class="pull-right">
                             <div class="pagination">
