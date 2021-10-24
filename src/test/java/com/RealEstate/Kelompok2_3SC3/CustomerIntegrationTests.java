@@ -33,18 +33,18 @@ public class CustomerIntegrationTests {
     @Test
     public void createCustomerTest() throws Exception {
         Customer customer = new Customer();
-        customer.setEmail("minan@mail.com");
-        customer.setAddress("jalann");
-        customer.setBirthday("20201112");
-        customer.setName("minna");
+        customer.setEmail("@husen@mail.com");
+        customer.setAddress("jalanan");
+        customer.setBirthday("20211112");
+        customer.setName("husen");
         customer.setPassword("password");
 
         when(customerRepository.save(customer)).thenReturn(customer);
         customerService.register(customer);
 
-        when(customerRepository.findByEmail("minan@husen.com")).thenReturn(customer);
+        when(customerRepository.findByEmail("husen@mail.com")).thenReturn(customer);
 
-        Customer checkCustomer = this.customerRepository.findByEmail("minan@husen.com");
+        Customer checkCustomer = this.customerRepository.findByEmail("husen@mail.com");
 
         Assertions.assertEquals(customer, checkCustomer);
     }
@@ -52,18 +52,18 @@ public class CustomerIntegrationTests {
     @Test
     public void createCustomerTestWithEmptyName() throws Exception {
         Customer customer = new Customer();
-        customer.setEmail("minan@husen.com");
-        customer.setAddress("jalann");
-        customer.setBirthday("20201112");
+        customer.setEmail("husen@mail.com");
+        customer.setAddress("jalanan");
+        customer.setBirthday("20211112");
         customer.setName("");
         customer.setPassword("password");
 
         when(customerRepository.save(customer)).thenReturn(customer);
         customerService.register(customer);
 
-        when(customerRepository.findByEmail("minan@husen.com")).thenReturn(customer);
+        when(customerRepository.findByEmail("husen@mail.com")).thenReturn(customer);
 
-        Customer checkCustomer = this.customerRepository.findByEmail("minan@husen.com");
+        Customer checkCustomer = this.customerRepository.findByEmail("husen@mail.com");
 
         Assertions.assertEquals(customer, checkCustomer);
     }
@@ -77,9 +77,9 @@ public class CustomerIntegrationTests {
         try {
             Customer customer = new Customer();
             customer.setEmail("");
-            customer.setAddress("jalann");
-            customer.setBirthday("20201112");
-            customer.setName("minna");
+            customer.setAddress("jalanan");
+            customer.setBirthday("20211112");
+            customer.setName("husen");
             customer.setPassword("password");
 
             when(customerRepository.save(customer))
