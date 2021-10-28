@@ -103,7 +103,7 @@ and open the template in the editor.
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label>Property Status :</label>
-                                                        <select th:field="*{categories}" id="lunchBegins" class="selectpicker" title="Select Property Status">
+                                                        <select  name="category_id" id="category_id" class="selectpicker" title="Select Property Status">
                                                             <th:block th:each="cat : ${categories}">
                                                                 <option th:text="${cat.name}" th:value="${cat.id}"></option>
                                                             </th:block>

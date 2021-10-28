@@ -52,12 +52,13 @@ public class PropertyController {
     }
     
     @PostMapping("/submit-property")
-    public String saveProductBuy(Model model,@RequestParam("image") MultipartFile file,
+    public String saveProductBuy(@RequestParam("image") MultipartFile file,
                 @RequestParam("image2") MultipartFile file2,
                 @RequestParam("image3") MultipartFile file3,
                 @RequestParam("image4") MultipartFile file4,
     		@RequestParam("title") String title,
     		@RequestParam("price") long price,
+                @RequestParam("category_id") long categoryId,
                 @RequestParam("customer_id") long customerId,
                 @RequestParam("area") long area,
                 @RequestParam("bedroom") long bedroom,
@@ -66,11 +67,7 @@ public class PropertyController {
                 @RequestParam("desc") String desc)
     {
         
-        List<Category> categories = categoryInterface.getAll();
-        model.addAttribute("categories", categories);
         
-        Category category = new Category();
-        long categoryId = (long) category.getId();
         
         propertyService.saveProductToDB(file, file2, file3, file4, title, price,
                 categoryId, customerId, area, bedroom, city, bathroom, desc);
