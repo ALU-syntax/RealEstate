@@ -13,6 +13,7 @@ import com.RealEstate.Kelompok2_3SC3.repositories.PropertyRepository;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -42,12 +43,19 @@ public class PropertyService implements PropertyInterface{
 
     @Override
     public Property getById(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                Optional < Property > optional = propertyRepository.findById(id);
+
+        if (!optional.isPresent()) {
+        throw new RuntimeException(" Todo not found for id :: " + id);
+    }
+
+    Property property = optional.get();
+        return property;
+
     }
 
     @Override
-    public void saveProductToDB(MultipartFile file, MultipartFile file2,
-            MultipartFile file3, MultipartFile file4, String title, long price,
+    public void saveProductToDB(MultipartFile file,  String title, long price,
             long categoryId, long customer_id, long area, long bedroom,
             String city, long bathroom, String desc) {
         
@@ -62,36 +70,36 @@ public class PropertyService implements PropertyInterface{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        String fileName2 = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName2.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			property.setImage2(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        String fileName3 = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName3.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			property.setImage3(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        String fileName4 = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName4.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			property.setImage4(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//        String fileName2 = StringUtils.cleanPath(file.getOriginalFilename());
+//        if(fileName2.contains(".."))
+//		{
+//			System.out.println("not a a valid file");
+//		}
+//		try {
+//			property.setImage2(Base64.getEncoder().encodeToString(file.getBytes()));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//        String fileName3 = StringUtils.cleanPath(file.getOriginalFilename());
+//        if(fileName3.contains(".."))
+//		{
+//			System.out.println("not a a valid file");
+//		}
+//		try {
+//			property.setImage3(Base64.getEncoder().encodeToString(file.getBytes()));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//        String fileName4 = StringUtils.cleanPath(file.getOriginalFilename());
+//        if(fileName4.contains(".."))
+//		{
+//			System.out.println("not a a valid file");
+//		}
+//		try {
+//			property.setImage4(Base64.getEncoder().encodeToString(file.getBytes()));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
         property.setTitle(title);
         property.setPrice(price);

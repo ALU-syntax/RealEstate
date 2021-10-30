@@ -19,8 +19,7 @@ public interface PropertyInterface {
     
     List<Property> getAll();
     
-    void  saveProductToDB(MultipartFile file,MultipartFile file2,
-            MultipartFile file3, MultipartFile file4, String title,long price
+    void  saveProductToDB(MultipartFile file, String title,long price
 			,long categoryId, long customerId, long area,
                         long bedroom, String city, long bathroom, String desc
                         );

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -28,11 +28,14 @@ and open the template in the editor.
     <nav th:replace="includes/base :: navbar"></nav>
     <!-- End of nav bar -->
 
+<th:block th:object="${detail}">
+    
     <div class="page-head">
         <div class="container">
             <div class="row">
                 <div class="page-head-content">
-                    <h1 class="page-title">Super nice villa </h1>
+                    <h1 type="hidden" th:field="*{id}"></h1>
+                    <h1 class="page-title" >Detail Property</h1>
                 </div>
             </div>
         </div>
@@ -52,18 +55,18 @@ and open the template in the editor.
                                 <div class="clearfix">
 
                                     <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                                        <li data-thumb="/img/property-1/property1.jpg">
-                                            <img src="/img/property-1/property1.jpg" />
+                                        <li th:attr="data-thumb=*{'data:image/jpeg;base64,'+{image}}">
+                                            <img th:src="*{'data:image/jpeg;base64,'+{image}}" />
                                         </li>
-                                        <li data-thumb="/img/property-1/property2.jpg">
-                                            <img src="/img/property-1/property3.jpg" />
+<!--                                        <li th:attr="data-thumb=*{'data:image2/jpeg;base64,'+{image2}}">
+                                            <img th:src="*{'data:image2/jpeg;base64,'+{image2}}" />
                                         </li>
-                                        <li data-thumb="/img/property-1/property3.jpg">
-                                            <img src="/img/property-1/property3.jpg" />
+                                        <li th:attr="data-thumb=*{'data:image3/jpeg;base64,'+{image3}}">
+                                            <img th:src="*{'data:image3/jpeg;base64,'+{image3}}" />
                                         </li>
-                                        <li data-thumb="/img/property-1/property4.jpg">
-                                            <img src="/img/property-1/property4.jpg" />
-                                        </li>
+                                        <li th:attr="data-thumb=*{'data:image4/jpeg;base64,'+{image4}}">
+                                            <img th:src="*{'data:image4/jpeg;base64,'+{image4}}" />
+                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +76,7 @@ and open the template in the editor.
                             <div class="section">
                                 <h4 class="s-property-title">Description</h4>
                                 <div class="s-property-content">
-                                    <p>Kalau kamu lagi cari villa dengan kapasitas lebih dari 16 orang, villa ini bisa jadi pilihan. Punya 4 kamar dengan 6 bed berukuran queen size, ajak rombongan menginap di sini pasti seru. Nilai plusnya, setiap kamar dilengkapi jendela besar yang menyuguhkan pemandangan hijau di sekeliling villa. Area makan dan tempat santainya punya konsep semi outdoor, jadi udara sejuknya tetap terasa di seluruh ruangan. Tapi area favorit kami adalah teras rooftopnya yang menyuguhkan view yang memanjakan mata!</p>
+                                    <p th:text="*{desc}"></p>
                                 </div>
                             </div>
                         </div>
@@ -87,8 +90,8 @@ and open the template in the editor.
                             <div class="dealer-content">
                                 <div class="inner-wrapper">
                                     <div class="single-property-header">
-                                        <h1 class="property-title">Super Nice Villa</h1>
-                                        <span class="property-price">$300,000</span>
+                                        <h1 class="property-title" th:text="*{title}">Super Nice Villa</h1>
+                                        <span class="property-price" >Rp<span th:text="*{price}"></span></span>
                                     </div>
 
                                     <div class="property-meta entry-meta clearfix ">
@@ -99,7 +102,7 @@ and open the template in the editor.
                                                 </span>
                                             <span class="property-info-entry">
                                                     <span class="property-info-label">Status</span>
-                                            <span class="property-info-value">For Sale</span>
+                                            <span class="property-info-value" th:text="*{categoryId}">For Sale</span>
                                             </span>
                                         </div>
 
@@ -109,7 +112,7 @@ and open the template in the editor.
                                                 </span>
                                             <span class="property-info-entry">
                                                     <span class="property-info-label">Area</span>
-                                            <span class="property-info-value">3500<b class="property-info-unit">Sq Ft</b></span>
+                                                    <span class="property-info-value" th:text="*{area}"><b class="property-info-unit"><sup>m2</sup></b></span>
                                             </span>
                                         </div>
 
@@ -119,7 +122,7 @@ and open the template in the editor.
                                                 </span>
                                             <span class="property-info-entry">
                                                     <span class="property-info-label">Bedrooms</span>
-                                            <span class="property-info-value">3</span>
+                                            <span class="property-info-value" th:text="*{bedroom}"></span>
                                             </span>
                                         </div>
 
@@ -130,7 +133,7 @@ and open the template in the editor.
                                                 </span>
                                             <span class="property-info-entry">
                                                     <span class="property-info-label">City</span>
-                                            <span class="property-info-value">Bogor</span>
+                                            <span class="property-info-value" th:text="*{city}"></span>
                                             </span>
                                         </div>
 
@@ -140,7 +143,7 @@ and open the template in the editor.
                                                 </span>
                                             <span class="property-info-entry">
                                                     <span class="property-info-label">Bathroom</span>
-                                            <span class="property-info-value">2</span>
+                                            <span class="property-info-value" th:text="*{bathroom}">2</span>
                                             </span>
                                         </div>
 
@@ -200,6 +203,9 @@ and open the template in the editor.
 
         </div>
     </div>
+    </th:block>
+    
+    
     <!-- Footer area-->
     <div th:replace="includes/base :: footer"></div>
     <!-- End Footer area -->

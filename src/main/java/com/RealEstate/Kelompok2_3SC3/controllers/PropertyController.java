@@ -53,9 +53,9 @@ public class PropertyController {
     
     @PostMapping("/submit-property")
     public String saveProductBuy(@RequestParam("image") MultipartFile file,
-                @RequestParam("image2") MultipartFile file2,
-                @RequestParam("image3") MultipartFile file3,
-                @RequestParam("image4") MultipartFile file4,
+//                @RequestParam("image2") MultipartFile file2,
+//                @RequestParam("image3") MultipartFile file3,
+//                @RequestParam("image4") MultipartFile file4,
     		@RequestParam("title") String title,
     		@RequestParam("price") long price,
                 @RequestParam("category_id") long categoryId,
@@ -69,7 +69,7 @@ public class PropertyController {
         
         
         
-        propertyService.saveProductToDB(file, file2, file3, file4, title, price,
+        propertyService.saveProductToDB(file,  title, price,
                 categoryId, customerId, area, bedroom, city, bathroom, desc);
     	
     	return "redirect:/property";
@@ -80,6 +80,7 @@ public class PropertyController {
         
         Property p = propertyInterface.getById(id);
         model.addAttribute("detail", p);
+        
         
         return "detail-property";
     
