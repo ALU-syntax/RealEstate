@@ -28,8 +28,7 @@ public interface PropertyInterface {
     
     Property getById(long id);
     
-    void  updateProductToDB(MultipartFile file,MultipartFile file2,
-            MultipartFile file3, MultipartFile file4,long id, String title,
+    void  updateProductToDB(MultipartFile file,long id, String title,
             long price,long categoryId,long customerId, long area,
             long bedroom, String city, long bathroom, String desc );
     

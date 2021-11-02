@@ -8,9 +8,12 @@ package com.RealEstate.Kelompok2_3SC3.controllers;
 import com.RealEstate.Kelompok2_3SC3.interfaces.CategoryInterface;
 import com.RealEstate.Kelompok2_3SC3.interfaces.PropertyInterface;
 import com.RealEstate.Kelompok2_3SC3.models.Category;
+import com.RealEstate.Kelompok2_3SC3.models.Customer;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import com.RealEstate.Kelompok2_3SC3.services.PropertyService;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -75,6 +78,23 @@ public class PropertyController {
     	return "redirect:/property";
     }
     
+    @PostMapping("/update-property")
+    public String updateProperty(@RequestParam("image")MultipartFile file,
+            @RequestParam("title") String title,
+    		@RequestParam("price") long price,
+                @RequestParam("category_id") long categoryId,
+                @RequestParam("customer_id") long customerId,
+                @RequestParam("area") long area,
+                @RequestParam("bedroom") long bedroom,
+                @RequestParam("city") String city,
+                @RequestParam("bathroom") long bathroom,
+                @RequestParam("desc") String desc)
+    {
+        propertyService.updateProductToDB(file, area, title, price, categoryId, 
+                customerId, area, bedroom, city, bathroom, desc);
+        return "redirect:user-properties";
+    }
+    
     @GetMapping("/{id}/detail-property")
     public String detailProperty(@PathVariable(value = "id")long id, Model model){
         
@@ -84,6 +104,37 @@ public class PropertyController {
         
         return "detail-property";
     
+    }
+    
+    @GetMapping("/user-properties")
+    public String userPropertyPage(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        
+        Customer customer = new Customer();
+        customer.setId((long) session.getAttribute("id"));
+        
+        long myProperty = customer.getId();
+        
+        List<Property> property = propertyService.findByCustomerId(myProperty);
+        model.addAttribute("myproperties", property);
+    
+        return "user-properties";
+    }
+    
+    @PostMapping("/property/{id}/delete")
+    public String delete(@PathVariable(value = "id") long id) {
+        propertyInterface.delete(id);
+        return "redirect:/user-properties";
+    }
+    
+    @GetMapping("/property/{id}/edit")
+    public String edit(@PathVariable(value = "id") long id, Model model){
+        List<Category> categories = categoryInterface.getAll();
+        model.addAttribute("categories", categories);
+        
+        Property property = propertyInterface.getById(id);
+        model.addAttribute("property", property);
+        return "edit-property";
     }
     
 }

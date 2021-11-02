@@ -115,18 +115,36 @@ public class PropertyService implements PropertyInterface{
     }
 
     @Override
-    public void updateProductToDB(MultipartFile file, MultipartFile file2,
-            MultipartFile file3, MultipartFile file4, long id, String title,
-            long price, long categoryId, long customerId, long area,
-            long bedroom, String city, long bathroom, String desc) {
+    public void updateProductToDB(MultipartFile file, long id, String title, long price, long categoryId, long customerId, long area, long bedroom, String city, long bathroom, String desc) {
+        Property property = new Property();
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName.contains(".."))
+		{
+			System.out.println("not a a valid file");
+		}
+		try {
+			property.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
+        property.setId(id);
+        property.setTitle(title);
+        property.setPrice(price);
+        property.setCategoryId(categoryId);
+        property.setCustomerId(customerId);
+        property.setArea(area);
+        property.setBedroom(bedroom);
+        property.setCity(city);
+        property.setBathroom(bathroom);
+        property.setDesc(desc);
+        
+        propertyRepository.save(property);
     }
-
-    
 
     @Override
     public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.propertyRepository.deleteById(id);
     }
     
     

@@ -8,7 +8,8 @@ and open the template in the editor.
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js"
+      xmlns:th="http://www.thymeleaf.org">  <!--<![endif]-->
     <head th:replace="includes/base :: css"></head>
     <body>
 
@@ -77,29 +78,32 @@ and open the template in the editor.
                             </div>
 
                         </div>
-
+                        <th:block th:each="myProperty : ${myproperties}">
                         <div class="section"> 
                             <div id="list-type" class="proerty-th-list">
                                 <div class="col-md-4 p0">
                                     <div class="box-two proerty-item">
                                         <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
+                                            <a href="property-1.html" ><img th:src="*{'data:image/jpeg;base64,'+{myProperty.image}}"></a>
                                         </div>
                                         <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
+                                            <h5><a href="property-1.html" th:text="${myProperty.title}"> </a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
+                                            <span class="pull-left"><b> Area :</b><span th:text="${myProperty.area}"></span><b class="property-info-unit"><sup>m2</sup></b></span>
+                                            <span class="proerty-price pull-right" > Rp <span th:text="${myProperty.price}"></span></span>
+                                            <p style="display: none;" th:text="${myProperty.desc}"></p>
                                             <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
+                                                <img src="/img/icon/bed.png"><span th:text="${myProperty.bedroom}"></span> |
+                                                <img src="/img/icon/shawer.png"><span th:text="${myProperty.bathroom}"></span> |
+                                                <img src="/img/icon/cars.png"><span th:text="${myProperty.city}"></span>  
 
                                                 <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
+                                                    <a th:href="@{/property/{id}/edit(id=${ myProperty.id })}" class="button">Edit </a>
+<!--                                                    <a class="button delete_user_car" onSubmit="return confirm('Do you really want to elete to-do?')" method="POST" action="#" th:action="@{/property/{id}/delete(id=${ myProperty.id })}">Delete</a>-->
+                                                    <a th:href="@{/{id}/detail-property(id=${myProperty.id})}" class="button">View</a>
+                                                    <form class="button delete_user_car" onSubmit="return confirm('Do you really want to elete to-do?')" method="POST" action="#" th:action="@{/property/{id}/delete(id=${ myProperty.id })}">
+                                                        <button type="submit" class="button delete_user_car">Delete</button>
+                                                    </form>
                                                 </div>
                                             </div>
 
@@ -107,180 +111,9 @@ and open the template in the editor.
                                         </div>
                                     </div>
                                 </div>                             
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow ">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-1.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div> 
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-2.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>                             
-
-                                <div class="col-md-4 p0">
-                                    <div class="box-two proerty-item">
-                                        <div class="item-thumb">
-                                            <a href="property-1.html" ><img src="assets/img/demo/property-3.jpg"></a>
-                                        </div>
-
-                                        <div class="item-entry overflow">
-                                            <h5><a href="property-1.html"> Super nice villa </a></h5>
-                                            <div class="dot-hr"></div>
-                                            <span class="pull-left"><b> Area :</b> 120m </span>
-                                            <span class="proerty-price pull-right"> $ 300,000</span>
-                                            <p style="display: none;">Suspendisse ultricies Suspendisse ultricies Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium ...</p>
-                                            <div class="property-icon">
-                                                <img src="assets/img/icon/bed.png">(5)|
-                                                <img src="assets/img/icon/shawer.png">(2)|
-                                                <img src="assets/img/icon/cars.png">(1)  
-
-                                                <div class="dealer-action pull-right">                                        
-                                                    <a href="submit-property.html" class="button">Edit </a>
-                                                    <a href="#" class="button delete_user_car">Delete</a>
-                                                    <a href="property-1.html" class="button">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>                                                        
                             </div>
                         </div>
+                        </th:block>
 
                         <div class="section"> 
                             <div class="pull-right">
