@@ -52,11 +52,6 @@ public class LoginController {
         session.setAttribute("email", obj.getEmail());
         session.setAttribute("name", obj.getName());
         session.setAttribute("loggedIn", true);
-        session.setAttribute("birthday", obj.getBirthday());
-        session.setAttribute("nik", obj.getNik());
-        session.setAttribute("address", obj.getAddress());
-        session.setAttribute("number_phone", obj.getNumberPhone());
-        session.setAttribute("image", obj.getImage());
 
         return "redirect:/";
     }

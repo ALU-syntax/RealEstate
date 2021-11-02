@@ -38,14 +38,14 @@ public class WebMvcRegisterTests {
     public void testRegisterWithRightCredentials() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Pendaftaran")));
+                .andExpect(content().string(containsString("Home")));
 
         String email = RandomString.make(10).toLowerCase() + "@mail.com";
         String password = RandomString.make(10).toLowerCase();
         
         Customer customer = new Customer();
         customer.setEmail(email);
-        customer.setName("Hudya");
+        customer.setName("Minan");
         customer.setPassword(password);
 
         mockMvc.perform(post("/register")
@@ -58,7 +58,7 @@ public class WebMvcRegisterTests {
     public void testRegisterWithoutName() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Pendaftaran")));
+                .andExpect(content().string(containsString("Home")));
 
         String email = RandomString.make(10).toLowerCase() + "@mail.com";
         String password = RandomString.make(10).toLowerCase();
@@ -86,14 +86,14 @@ public class WebMvcRegisterTests {
     public void testRegisterWithoutPassword() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Pendaftaran")));
+                .andExpect(content().string(containsString("Home")));
 
         String email = RandomString.make(10).toLowerCase() + "@mail.com";
         String password = RandomString.make(10).toLowerCase();
         
         Customer customer = new Customer();
         customer.setEmail(email);
-        customer.setName("Hudya");
+        customer.setName("Minan");
         customer.setPassword("");
 
         mockMvc.perform(post("/register")
@@ -110,18 +110,111 @@ public class WebMvcRegisterTests {
                 );
     }
     
+//    @Test
+//    public void testRegisterWithoutBirthday() throws Exception {
+//        mockMvc.perform(get("/register"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(containsString("Home")));
+//
+//        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+//        String password = RandomString.make(10).toLowerCase();
+//        
+//        Customer customer = new Customer();
+//        customer.setEmail(email);
+//        customer.setName("Hudya");
+//        customer.setBirthday("");
+//        customer.setAddress("jalanankita");
+//        customer.setNumberPhone(00000);
+//        customer.setPassword(password);
+//
+//        mockMvc.perform(post("/register")
+//                .flashAttr("customer", customer))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(MockMvcResultMatchers.redirectedUrl("/register"))
+//                .andExpect(MockMvcResultMatchers
+//                        .flash().attributeExists("danger")
+//                )
+//                .andExpect(
+//                        MockMvcResultMatchers
+//                                .flash()
+//                                .attribute("danger", "Birthday cannot be null!")
+//                );
+//    }
+//    
+//    @Test
+//    public void testRegisterWithoutAddress() throws Exception {
+//        mockMvc.perform(get("/register"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(containsString("Home")));
+//
+//        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+//        String password = RandomString.make(10).toLowerCase();
+//        
+//        Customer customer = new Customer();
+//        customer.setEmail(email);
+//        customer.setName("Hudya");
+//        customer.setBirthday("20201222");
+//        customer.setAddress("");
+//        customer.setNumberPhone(00000);
+//        customer.setPassword(password);
+//
+//        mockMvc.perform(post("/register")
+//                .flashAttr("customer", customer))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(MockMvcResultMatchers.redirectedUrl("/register"))
+//                .andExpect(MockMvcResultMatchers
+//                        .flash().attributeExists("danger")
+//                )
+//                .andExpect(
+//                        MockMvcResultMatchers
+//                                .flash()
+//                                .attribute("danger", "Address cannot be null!")
+//                );
+//    }
+    
+//    @Test
+//    public void testRegisterWithoutNumberPhone() throws Exception {
+//        mockMvc.perform(get("/register"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(containsString("Pendaftaran")));
+//
+//        String email = RandomString.make(10).toLowerCase() + "@mail.com";
+//        String password = RandomString.make(10).toLowerCase();
+//        
+//        Customer customer = new Customer();
+//        customer.setEmail(email);
+//        customer.setName("Hudya");
+//        customer.setBirthday("20201222");
+//        customer.setAddress("jalanankita");
+//        customer.setNumberPhone("");
+//        customer.setPassword(password);
+//
+//        mockMvc.perform(post("/register")
+//                .flashAttr("customer", customer))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(MockMvcResultMatchers.redirectedUrl("/register"))
+//                .andExpect(MockMvcResultMatchers
+//                        .flash().attributeExists("danger")
+//                )
+//                .andExpect(
+//                        MockMvcResultMatchers
+//                                .flash()
+//                                .attribute("danger", "Password cannot be null!")
+//                );
+//    }
+    
     @Test
     public void testRegisterThenLogin() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Pendaftaran")));
+                .andExpect(content().string(containsString("Home")));
         
         String email = RandomString.make(10).toLowerCase() + "@mail.com";
         String password = RandomString.make(10).toLowerCase();
        
         Customer customer = new Customer();
         customer.setEmail(email);
-        customer.setName("Hudya");
+        customer.setName("Minan");
         customer.setPassword(password);
 
         mockMvc.perform(post("/register")

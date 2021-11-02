@@ -34,21 +34,6 @@ public class Customer implements Serializable {
     
     @Column(name="password")
     private String password;
-    
-    @Column(name="birthday")
-    private String birthday;
-    
-    @Column(name="nik")
-    private long nik;
-    
-    @Column(name="address")
-    private String address;
-    
-    @Column(name="number_phone")
-    private long numberPhone;    
-    
-    @Column(name = "image")
-    private String image;
 
     public long getId() {
         return id;
@@ -81,46 +66,4 @@ public class Customer implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public long getNik() {
-        return nik;
-    }
-
-    public void setNik(long nik) {
-        this.nik = nik;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public long getNumberPhone() {
-        return numberPhone;
-    }
-
-    public void setNumberPhone(long numberPhone) {
-        this.numberPhone = numberPhone;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-    
-    
 }

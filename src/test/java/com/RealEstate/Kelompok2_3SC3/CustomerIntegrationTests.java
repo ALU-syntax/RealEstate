@@ -33,9 +33,7 @@ public class CustomerIntegrationTests {
     @Test
     public void createCustomerTest() throws Exception {
         Customer customer = new Customer();
-        customer.setEmail("@husen@mail.com");
-        customer.setAddress("jalanan");
-        customer.setBirthday("20211112");
+        customer.setEmail("husen@mail.com");
         customer.setName("husen");
         customer.setPassword("password");
 
@@ -53,8 +51,6 @@ public class CustomerIntegrationTests {
     public void createCustomerTestWithEmptyName() throws Exception {
         Customer customer = new Customer();
         customer.setEmail("husen@mail.com");
-        customer.setAddress("jalanan");
-        customer.setBirthday("20211112");
         customer.setName("");
         customer.setPassword("password");
 
@@ -77,8 +73,6 @@ public class CustomerIntegrationTests {
         try {
             Customer customer = new Customer();
             customer.setEmail("");
-            customer.setAddress("jalanan");
-            customer.setBirthday("20211112");
             customer.setName("husen");
             customer.setPassword("password");
 
