@@ -5,20 +5,31 @@
  */
 package com.RealEstate.Kelompok2_3SC3;
 
+import com.RealEstate.Kelompok2_3SC3.models.Customer;
 import com.RealEstate.Kelompok2_3SC3.models.Property;
 import com.RealEstate.Kelompok2_3SC3.repositories.PropertyRepository;
 import com.RealEstate.Kelompok2_3SC3.services.PropertyService;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -38,7 +49,7 @@ public class PropertyTests {
     @Autowired
     PropertyService service;
     
-    @Mock
+    @MockBean
     PropertyRepository repositiries;
     
     @Autowired
@@ -66,153 +77,106 @@ public class PropertyTests {
                 .andExpect(status().is3xxRedirection());
     }
     @Test
-    public void CreatePropertyWithoutTitle(MultipartFile file, String title, long price,
-            long categoryId, long customerId, long area, long bedroom, 
-            String city, long bathroom, String desc) throws Exception{
-         Throwable e = null;
-        String message = null;
-        
-        try {
-        Property property = new Property();
-        property.setTitle("");
-        property.setPrice(5000);
-        property.setCategoryId(1);
-        property.setCustomerId(2);
-        property.setArea(1000);
-        property.setBedroom(6);
-        property.setCity("jakarta");
-        property.setBathroom(3);
-        property.setDesc("Mantap");
-        property.setImage("pabrik");
-        property.setImage2("pabrik 2");
-        property.setImage3("pabrik 3");
-        property.setImage4("pabrik 4");
-        
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName.contains(".."))
-		{
-			System.out.println("not a a valid file");
-		}
-		try {
-			property.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-        
-        title = property.getTitle();
-        price = property.getPrice();
-        categoryId = property.getCategoryId();
-        customerId = property.getCustomerId();
-        area = property.getArea();
-        bedroom = property.getBedroom();
-        city = property.getCity();
-        bathroom = property.getBathroom();
-        desc = property.getDesc();
+    public void CreatePropertyWithoutTitle() throws Exception{
+         try{
+            MultipartFile image = new MockMultipartFile("file", "test-file.txt",
+                "text/plain" , "Green Learner - Arvind".getBytes());
+            Mockito.doThrow(IllegalStateException.class)
+                    .when(service)
+                    .saveProductToDB(image,anyString(),anyInt(),anyInt(),
+                            anyInt(),anyInt(),anyInt(),anyString(),anyInt(),anyString());
 
-            when(repositiries.save(property))
-                    .thenThrow(new Exception("please fill out this field"));
-            service.saveProductToDB(fileName, title, price, categoryId, customerId, area, bedroom, city, bathroom, desc);
-        } catch (Exception ex) {
-            e = ex;
-            message = ex.getMessage();
+            service.saveProductToDB(image, null, 1000000, 1, 2, 2120, 4, "Jakarta",
+                    8, "Pokoknya bagus dah");
+        }catch(Exception e){
+            Assertions.assertTrue(e instanceof Exception);
         }
         
-        Assertions.assertTrue(e instanceof Exception);
 }
+
+    //Create Without City
     @Test
     public void CreatePropertyWithoutCity() throws Exception{
-         Throwable e = null;
-        String message = null;
-        
-        try {
-        Property property = new Property();
-        property.setTitle("rumah");
-        property.setPrice(5000);
-        property.setCategoryId(1);
-        property.setCustomerId(2);
-        property.setArea(1000);
-        property.setBedroom(6);
-        property.setCity("");
-        property.setBathroom(3);
-        property.setDesc("Mantap");
-        property.setImage("pabrik");
-        property.setImage2("pabrik 2");
-        property.setImage3("pabrik 3");
-        property.setImage4("pabrik 4");
+         try{
+            MultipartFile image = new MockMultipartFile("file", "test-file.txt",
+                "text/plain" , "Green Learner - Arvind".getBytes());
+            Mockito.doThrow(IllegalStateException.class)
+                    .when(service)
+                    .saveProductToDB(image,anyString(),anyInt(),anyInt(),
+                            anyInt(),anyInt(),anyInt(),anyString(),anyInt(),anyString());
 
-            when(repositiries.save(property))
-                    .thenThrow(new Exception("please fill out this field"));
-            service.save(property);
-        } catch (Exception ex) {
-            e = ex;
-            message = ex.getMessage();
+            service.saveProductToDB(image, "Villa Bogor Indah", 1000000, 1, 2, 2120, 4, null,
+                    8, "Pokoknya bagus dah");
+        }catch(Exception e){
+            Assertions.assertTrue(e instanceof Exception);
         }
-        
-        Assertions.assertTrue(e instanceof Exception);
 }
-    
+ 
+    //Create Property Without Desc
    @Test
     public void CreatePropertyWithoutDesc() throws Exception{
-         Throwable e = null;
-        String message = null;
-        
-        try {
-        Property property = new Property();
-        property.setTitle("rumah");
-        property.setPrice(5000);
-        property.setCategoryId(1);
-        property.setCustomerId(2);
-        property.setArea(1000);
-        property.setBedroom(6);
-        property.setCity("jakarta");
-        property.setBathroom(3);
-        property.setDesc("");
-        property.setImage("pabrik");
-        property.setImage2("pabrik 2");
-        property.setImage3("pabrik 3");
-        property.setImage4("pabrik 4");
+         try{
+            MultipartFile image = new MockMultipartFile("file", "test-file.txt",
+                "text/plain" , "Green Learner - Arvind".getBytes());
+            Mockito.doThrow(IllegalStateException.class)
+                    .when(service)
+                    .saveProductToDB(image,anyString(),anyInt(),anyInt(),
+                            anyInt(),anyInt(),anyInt(),anyString(),anyInt(),anyString());
 
-            when(repositiries.save(property))
-                    .thenThrow(new Exception("please fill out this field"));
-            service.save(property);
-        } catch (Exception ex) {
-            e = ex;
-            message = ex.getMessage();
+            service.saveProductToDB(image, "Villa Bogor Indah", 1000000, 1, 2, 2120, 4, "Bogor",
+                    8, null);
+        }catch(Exception e){
+            Assertions.assertTrue(e instanceof Exception);
         }
-        
-        Assertions.assertTrue(e instanceof Exception);
-}
+    }
+    
+    //Delete
     @Test
-    public void CreatePropertyWithoutImage() throws Exception{
-         Throwable e = null;
-        String message = null;
+    public void DeleteBuyProduct(){
         
-        try {
         Property property = new Property();
-        property.setTitle("rumah");
-        property.setPrice(5000);
-        property.setCategoryId(1);
-        property.setCustomerId(2);
-        property.setArea(1000);
-        property.setBedroom(6);
-        property.setCity("jakarta");
-        property.setBathroom(3);
-        property.setDesc("mantap");
-        property.setImage("");
-        property.setImage2("pabrik 2");
-        property.setImage3("pabrik 3");
-        property.setImage4("pabrik 4");
-
-            when(repositiries.save(property))
-                    .thenThrow(new Exception("please fill out this field"));
-            service.save(property);
-        } catch (Exception ex) {
-            e = ex;
-            message = ex.getMessage();
-        }
+        property.setId(1);
         
-        Assertions.assertTrue(e instanceof Exception);
-}
-}
+        long id = property.getId();
+        doNothing().when(repositiries).deleteById(id);
+        service.delete(id);
+        
+        verify(repositiries, times(1)).deleteById(id);
+    }
+    
+//    Edit
+    @Test
+    public void TestUsingUpdateMethod() throws Exception {
+        
+        MultipartFile image = new MockMultipartFile("file", "test-file.txt",
+            "text/plain" , "Property Villa Puncak Uhuy".getBytes());
+        
+        
+        Property property = new Property();
+        property.setImage(image.getOriginalFilename());
+        property.setTitle("Villa Uhuy");
+        property.setPrice(2000000000);
+        property.setCategoryId(1);
+        property.setCustomerId(1);
+        property.setArea(4020);
+        property.setBedroom(4);
+        property.setCity("Bogor");
+        property.setBathroom(4);
+        property.setDesc("Ajib dah pokoknya");
+        property.setId(1);
+        
+        
+        when(repositiries.save(property)).thenReturn(property);
+        service.updateProductToDB(image, 1, "Villa Uhuy", 2000000000, 1,1,
+                4020, 4, "Bogor", 4, "Ajib dah pokoknya");
+        
+        List<Property> listProperty = Arrays.asList(property);
 
+        when(repositiries.findByCustomerId(1)).thenReturn(listProperty);
+        List<Property> property2 = service.findByCustomerId(1);
+        
+        Assertions.assertEquals(Arrays.asList(property), property2);
+        
+    }
+}
     

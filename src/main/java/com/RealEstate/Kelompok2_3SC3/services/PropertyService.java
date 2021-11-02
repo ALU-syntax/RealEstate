@@ -115,7 +115,9 @@ public class PropertyService implements PropertyInterface{
     }
 
     @Override
-    public void updateProductToDB(MultipartFile file, long id, String title, long price, long categoryId, long customerId, long area, long bedroom, String city, long bathroom, String desc) {
+    public void updateProductToDB(MultipartFile file, long id, String title,
+            long price, long categoryId, long customerId, long area, long bedroom,
+            String city, long bathroom, String desc) {
         Property property = new Property();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName.contains(".."))
