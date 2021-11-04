@@ -47,6 +47,21 @@ public class RegisterController {
             return "redirect:/register";
         }
         
+        if (customer.getBirthday().equals("")) {
+            ra.addFlashAttribute("danger", "Birthday cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (customer.getAddress().equals("")) {
+            ra.addFlashAttribute("danger", "Address cannot be null!");
+            return "redirect:/register";
+        }
+        
+        if (customer.getEmail().equals("")) {
+            ra.addFlashAttribute("danger", "Email cannot be null!");
+            return "redirect:/register";
+        }
+        
         customerInterface.register(customer);
         return "redirect:/login";
     }
